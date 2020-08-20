@@ -89,6 +89,20 @@ else()
 endif()
 
 add_library(ionc_static STATIC $<TARGET_OBJECTS:objlib>)
+target_include_directories(ionc_static
+      PUBLIC
+            $<INSTALL_INTERFACE:include>
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../decNumber/include>
+      PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}
+
+)
+set_target_properties(ionc_static
+        PROPERTIES
+        VERSION ${PROJECT_VERSION}
+        SOVERSION ${PROJECT_VERSION}
+        PUBLIC_HEADER "${LIB_PUB_HEADERS}")
 
 
 if (MSVC)
@@ -96,6 +110,7 @@ if (MSVC)
 else()
     # Unix requires linking against lib m explicitly.
     target_link_libraries(ionc PUBLIC decNumber m)
+    target_link_libraries(ionc_static PUBLIC decNumber_static m)
 endif()
 
 set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/IonC)
