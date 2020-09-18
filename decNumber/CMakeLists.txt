@@ -24,28 +24,30 @@ set(DEC_PUB_HEADERS
 add_library(decNumber ${declibsrc})
 set_property(TARGET decNumber PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-target_include_directories(decNumber
+target_include_directories(decNumber SYSTEM
         PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 
 set_target_properties(decNumber
     PROPERTIES
-        PUBLIC_HEADER "${DEC_PUB_HEADERS}")
+        PUBLIC_HEADER "${DEC_PUB_HEADERS}"
+        COMPILE_FLAGS "-Wno-all -Wno-discarded-qualifiers -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-incompatible-pointer-types")
 
 # ---
 
 add_library(decNumber_static STATIC ${declibsrc})
 set_property(TARGET decNumber_static PROPERTY POSITION_INDEPENDENT_CODE 1)
 
-target_include_directories(decNumber_static
+target_include_directories(decNumber_static SYSTEM
         PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 
 set_target_properties(decNumber_static
     PROPERTIES
-        PUBLIC_HEADER "${DEC_PUB_HEADERS}")
+        PUBLIC_HEADER "${DEC_PUB_HEADERS}"
+        COMPILE_FLAGS "-Wno-all -Wno-discarded-qualifiers -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-incompatible-pointer-types")
 
 # ---
 

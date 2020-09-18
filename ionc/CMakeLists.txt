@@ -55,9 +55,10 @@ add_library(objlib OBJECT ${libsrc})
 set_target_properties(objlib
         PROPERTIES
             POSITION_INDEPENDENT_CODE 1
-            C_STANDARD 99)
+            C_STANDARD 99
+            COMPILE_FLAGS "-Wno-all -Wno-discarded-qualifiers -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-incompatible-pointer-types") 
 
-target_include_directories(objlib
+target_include_directories(objlib SYSTEM 
         PUBLIC
             $<INSTALL_INTERFACE:include>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -72,7 +73,7 @@ if (MSVC)
   add_library(ionc $<TARGET_OBJECTS:objlib>) 
 else()
   add_library(ionc SHARED $<TARGET_OBJECTS:objlib>)
-  target_include_directories(ionc
+  target_include_directories(ionc SYSTEM
       PUBLIC
             $<INSTALL_INTERFACE:include>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -85,11 +86,12 @@ else()
         PROPERTIES
         VERSION ${PROJECT_VERSION}
         SOVERSION ${PROJECT_VERSION}
-        PUBLIC_HEADER "${LIB_PUB_HEADERS}")
+        PUBLIC_HEADER "${LIB_PUB_HEADERS}"
+        COMPILE_FLAGS "-Wno-all -Wno-discarded-qualifiers -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-incompatible-pointer-types")
 endif()
 
 add_library(ionc_static STATIC $<TARGET_OBJECTS:objlib>)
-target_include_directories(ionc_static
+target_include_directories(ionc_static SYSTEM
       PUBLIC
             $<INSTALL_INTERFACE:include>
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -102,7 +104,8 @@ set_target_properties(ionc_static
         PROPERTIES
         VERSION ${PROJECT_VERSION}
         SOVERSION ${PROJECT_VERSION}
-        PUBLIC_HEADER "${LIB_PUB_HEADERS}")
+        PUBLIC_HEADER "${LIB_PUB_HEADERS}"
+        COMPILE_FLAGS "-Wno-all -Wno-discarded-qualifiers -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -Wno-incompatible-pointer-types")
 
 
 if (MSVC)
