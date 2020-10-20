@@ -98,7 +98,7 @@ struct _ion_index
 
 };
 
-GLOBAL int32_t g_ion_index_multiplier_x128 INITTO(2*128);
+ION_GLOBAL int32_t g_ion_index_multiplier_x128 INITTO(2 * 128);
 
 #define II_GROW(x)                          \
     do {                                    \

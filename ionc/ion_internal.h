@@ -95,7 +95,7 @@ typedef struct _ion_header {
 #define IS_FLAG_ON(ii, f)   (!!(ii & f))
 
 
-GLOBAL BOOL _debug_on           INITTO(TRUE);
+ION_GLOBAL BOOL _debug_on           INITTO(TRUE);
 
 #define HANDLE_TO_PTR(h, t) ((t *)((void *)(h)))
 #define PTR_TO_HANDLE(ptr)  ((void *)(ptr))
@@ -125,7 +125,7 @@ GLOBAL BOOL _debug_on           INITTO(TRUE);
 
 
 // hex characters, just because we need them
-GLOBAL char _ion_hex_chars[]
+ION_GLOBAL char _ion_hex_chars[]
 #ifdef INIT_STATICS
 = {
     '0', '1', '2', '3', '4', '5', '6', '7',
@@ -137,8 +137,8 @@ GLOBAL char _ion_hex_chars[]
 #define _IS_IN_BYTE_RANGE(x) (((x) & (~0xff)) == 0)
 
 #define IS_BASE64_CHAR(x) (_IS_IN_BYTE_RANGE(x) && _Ion_is_base64_char[(x)] != 0)
-GLOBAL char *_Ion_base64_chars INITTO("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
-GLOBAL BOOL  _Ion_is_base64_char[256]
+ION_GLOBAL char *_Ion_base64_chars INITTO("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
+ION_GLOBAL BOOL  _Ion_is_base64_char[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //   0 -   9
@@ -171,7 +171,7 @@ GLOBAL BOOL  _Ion_is_base64_char[256]
 #endif
 ;
 #define ION_BASE64_TRAILING_CHAR '='
-GLOBAL BOOL  _Ion_base64_value[256]
+ION_GLOBAL BOOL  _Ion_base64_value[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  //   0 -   9
@@ -205,8 +205,8 @@ GLOBAL BOOL  _Ion_base64_value[256]
 ;
 
 #define IS_WHITESPACE_CHAR(x) (_IS_IN_BYTE_RANGE(x) && (_Ion_is_whitespace_char[(x)] != 0))
-GLOBAL char *_Ion_whitespace_chars INITTO("\n\r\t ");
-GLOBAL BOOL  _Ion_is_whitespace_char[256]
+ION_GLOBAL char *_Ion_whitespace_chars INITTO("\n\r\t ");
+ION_GLOBAL BOOL  _Ion_is_whitespace_char[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
          1,  0,  0,  0,  0,  0,  0,  0,  0,  1,  //   0 -   9   0 == '\0', 9 = '\t'
@@ -241,7 +241,7 @@ GLOBAL BOOL  _Ion_is_whitespace_char[256]
 
 
 
-GLOBAL int TID_NIBBLE_TO_ION_TYPE[]
+ION_GLOBAL int TID_NIBBLE_TO_ION_TYPE[]
 #ifdef INIT_STATICS
 = {
     TID_NULL,        //  tid_NULL      =  0,

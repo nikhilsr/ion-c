@@ -117,7 +117,7 @@ extern "C" {
 #define IonTrue   makeTypeDescriptor(TID_BOOL, ION_lnBooleanTrue)
 #define IonFalse  makeTypeDescriptor(TID_BOOL, ION_lnBooleanFalse)
 
-GLOBAL BYTE ION_VERSION_MARKER[ION_VERSION_MARKER_LENGTH]
+ION_GLOBAL BYTE ION_VERSION_MARKER[ION_VERSION_MARKER_LENGTH]
 #ifdef INIT_STATICS
  = { 0xe0, 0x01, 0x00, 0xea }
 #endif
@@ -178,7 +178,7 @@ GLOBAL BYTE ION_VERSION_MARKER[ION_VERSION_MARKER_LENGTH]
 #define ION_is_utf8_trailing_char_header(c) (((c) & ION_utf8_trailing_MASK) == ION_utf8_trailing_header)
 
 #define ION_unicode_byte_order_mark_utf8_start 0xEF
-GLOBAL BYTE ION_unicode_byte_order_mark_utf8[] 
+ION_GLOBAL BYTE ION_unicode_byte_order_mark_utf8[]
 #ifdef INIT_STATICS
 = { 0xEF, 0xBB, 0xBF }
 #endif

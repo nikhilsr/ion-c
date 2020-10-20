@@ -143,7 +143,7 @@ typedef struct _ion_scanner
 #define MAKE_BYTE(x)       ((BYTE)((int)(x) & 0xff))
 
 #define IS_OPERATOR_CHAR(x) (_ion_is_operator_character[(x)])
-GLOBAL BOOL  _ion_is_operator_character[256]
+ION_GLOBAL BOOL  _ion_is_operator_character[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //   0 -   9
@@ -177,7 +177,7 @@ GLOBAL BOOL  _ion_is_operator_character[256]
 ;
 
 #define IS_BASIC_SYMBOL_CHAR(x) (_ion_is_basic_symbol_character[(x)])
-GLOBAL BOOL  _ion_is_basic_symbol_character[256]
+ION_GLOBAL BOOL  _ion_is_basic_symbol_character[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
          0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  //   0 -   9
@@ -212,7 +212,7 @@ GLOBAL BOOL  _ion_is_basic_symbol_character[256]
 
 
 #define IS_HEX_CHAR(x) (_ion_hex_character_value[x] != -1)
-GLOBAL BOOL  _ion_hex_character_value[256]
+ION_GLOBAL BOOL  _ion_hex_character_value[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  //   0 -   9
@@ -246,7 +246,7 @@ GLOBAL BOOL  _ion_hex_character_value[256]
 ;
 
 #define IS_BINARY_CHAR(x) (_ion_binary_character_value[x] != -1)
-GLOBAL BOOL  _ion_binary_character_value[256]
+ION_GLOBAL BOOL  _ion_binary_character_value[256]
 #ifdef INIT_STATICS
 = { //   0   1   2   3   4   5   6   7   8   9
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  //   0 -   9
@@ -296,7 +296,7 @@ typedef enum { ION_TT_NO,   ION_TT_YES, ION_TT_MAYBE } ION_TERM_TYPE;
 //  '"' '\''  ':' ',' '/'
 //  '(' ')'   '['  ']'   '{'  '}'       
 
-GLOBAL ION_TERM_TYPE _Ion_value_terminators[256]
+ION_GLOBAL ION_TERM_TYPE _Ion_value_terminators[256]
 #ifdef INIT_STATICS
 = {
       //   0              1             2             3             4                          6             7             8             9
@@ -348,7 +348,7 @@ GLOBAL ION_TERM_TYPE _Ion_value_terminators[256]
 }
 #endif
 ;
-GLOBAL ION_TERM_TYPE _Ion_value_terminators2[256]
+ION_GLOBAL ION_TERM_TYPE _Ion_value_terminators2[256]
 #ifdef INIT_STATICS
 = {
        ION_TT_NO,    ION_TT_NO,    ION_TT_NO,    ION_TT_NO,    ION_TT_NO,   ION_TT_NO,    ION_TT_NO,    ION_TT_NO,    ION_TT_NO,    ION_TT_NO,  //   0    9 '\0'

@@ -34,11 +34,11 @@ extern "C" {
 #include <decNumber/decNumber.h>
 
 #ifdef ION_INIT
-  #define GLOBAL    ION_API_EXPORT
+  #define ION_GLOBAL    ION_API_EXPORT
   #define INITTO(x) = x
   #define INIT_STATICS
 #else
-  #define GLOBAL    extern
+  #define ION_GLOBAL    extern
   #define INITTO(x) /* nothing */
   #ifdef  INIT_STATICS
   #undef  INIT_STATICS

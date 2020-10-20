@@ -14,8 +14,8 @@
 #define BOOL int
 #endif
 
-#ifndef GLOBAL
-#define GLOBAL extern
+#ifndef ION_GLOBAL
+#define ION_GLOBAL extern
 #define OPT_INITTO(x)
 #endif
 

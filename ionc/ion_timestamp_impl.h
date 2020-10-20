@@ -37,7 +37,7 @@ extern "C" {
 // If, somehow, the timestamp has coarser than minute precision AND it has a known offset, ignore the offset.
 #define HAS_TZ_OFFSET(pt) (IS_FLAG_ON((pt)->precision, ION_TT_BIT_TZ) && IS_FLAG_ON((pt)->precision, ION_TT_BIT_MIN))
 
-GLOBAL int JULIAN_DAY_PER_MONTH[2][12]
+ION_GLOBAL int JULIAN_DAY_PER_MONTH[2][12]
 #ifdef INIT_STATICS
 =  {
 // jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec

@@ -166,7 +166,7 @@ typedef uint32_t  ION_STREAM_FLAG;
 
 #define IH_DEFAULT_PAGE_SIZE    (1024*8)
 
-GLOBAL SIZE g_Ion_Stream_Default_Page_Size INITTO(IH_DEFAULT_PAGE_SIZE);  // a global so we could choose to change a runtime with effort
+ION_GLOBAL SIZE g_Ion_Stream_Default_Page_Size INITTO(IH_DEFAULT_PAGE_SIZE);  // a global so we could choose to change a runtime with effort
 
 struct _ion_stream
 {
